@@ -1,4 +1,6 @@
 package me.yzhi.scala.macros
 
 @FillDefs
-object DynamicDefs
+object DynamicDefs {
+  val b = 88
+}

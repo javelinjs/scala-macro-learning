@@ -19,7 +19,21 @@ object ImplMacros {
     // create the definitions we're going to add
     val newDefDefs = List(
       DefDef(Modifiers(), TermName("x"), List(), List(), TypeTree(), Literal(Constant(5))),
-      DefDef(Modifiers(), TermName("y"), List(), List(), TypeTree(), Literal(Constant(7.0f)))
+      DefDef(Modifiers(), TermName("y"), List(), List(), TypeTree(), Literal(Constant(7.0f))),
+      DefDef(Modifiers(), TermName("f"), List(), List(List(ValDef(Modifiers(),
+        TermName("a"), Ident(TypeName("Int")), EmptyTree))), TypeTree(),
+        Apply(Select(Ident(TermName("a")), TermName("$plus")), List(Literal(Constant(3))))),
+      DefDef(Modifiers(), TermName("f2"), List(), List(List(ValDef(Modifiers(),
+        TermName("a"), Ident(TypeName("Int")), EmptyTree))), TypeTree(),
+        Apply(Select(Ident(TermName("a")), TermName("$plus")), List(Ident(TermName("b")))))
+      /*
+      DefDef(Modifiers(), newTermName("f"), List(),
+        List(List(ValDef(Modifiers(PARAM), newTermName("a"),
+        Ident(newTypeName("Int")), EmptyTree)), List(ValDef(Modifiers(PARAM),
+        newTermName("b"), Ident(newTypeName("String")), EmptyTree))),
+        TypeTree(), Apply(Select(Ident(newTermName("a")), newTermName("$plus")),
+        List(Ident(newTermName("b")))))
+        */
     )
 
     // pattern match on the inputs
